@@ -1,61 +1,61 @@
 @extends('app')
 
+
+@section('header')
+	<div class="ui menu" style="border-radius: 0rem !important; background-color: #FCF900">
+		<div class="header item">
+			STI Balance Inquiry
+		</div>
+
+		<div class="header item right">
+			Current User :: Guest
+		</div>
+	</div>
+@stop
+
+
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+	<br><br><br><br>
+	<div class="ui form grid">
+		<div class="seven wide column segment grid centered">
+			<div class="column">
+				<div class="ui form">
+					<form action="{{ url('/auth/login/') }}" method="post">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<div class="ui container segment">
+							<label class="ui blue ribbon label right" style="font-size: 16px;">Log-in your account</label>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+							<br><br><br>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
+							<div class="field">
+								<label for="email">E-mail</label>
+								<div class="ui left icon input">
+									<input type="email" name="email" id="email" placeholder="E-mail">
+									<i class="mail icon"></i>
 								</div>
 							</div>
-						</div>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
-
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
+							<div class="field">
+								<label for="password">Password</label>
+								<div class="ui left icon input">
+									<input type="password" name="password" id="password" placeholder="Password">
+									<i class="lock icon"></i>
+								</div>
 							</div>
+
+							<br>
+
+							<div class="ui buttons right floated">
+								<button class="ui button positive">Log-in</button>
+								<div class="or"></div>
+								<a href="" class="ui button negative">Forgot Password</a>
+							</div>
+
+							<br><br>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-@endsection
+@stop

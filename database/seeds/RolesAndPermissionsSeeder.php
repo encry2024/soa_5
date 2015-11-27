@@ -31,7 +31,7 @@ class RolesAndPermissionsSeeder extends Seeder {
         $user = Role::create([
             'name' => 'user',
             'display_name' => 'Portal User',
-            'description' => 'performs all basic tasks like print reciept, etc...',
+            'description' => 'performs all basic tasks like print receipt, etc...',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
@@ -47,24 +47,32 @@ class RolesAndPermissionsSeeder extends Seeder {
 
         $reporting = Permission::create([
             'name' => 'reporting',
-            'display_name' => 'Print Report, Print Reciepts',
+            'display_name' => 'Print Report, Print receipt',
             'description' => 'manage reports',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
-        $recipiet = Permission::create([
-            'name' => 'view-reciept',
-            'display_name' => 'View reciept, View Billings',
+        $editReporting = Permission::create([
+            'name' => 'edit-reporting',
+            'display_name' => 'Edit Report, Edit receipt',
+            'description' => 'manage reports',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        $receipt = Permission::create([
+            'name' => 'view-receipt',
+            'display_name' => 'View receipt, View Billings',
             'description' => 'View recipent and view billings',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         // assign permissions to roles
-        $admin->attachPermissions(array($editUser, $reporting, $recipiet));
-        $cashier->attachPermission(array($reporting, $recipiet));
-        $user->attachPermissions(array($reporting, $recipiet));
+        $admin->attachPermissions(array($editUser, $reporting, $receipt, $editReporting));
+        $cashier->attachPermissions(array($reporting, $receipt, $editReporting));
+        $user->attachPermissions(array($reporting, $receipt));
 
         // attach admin user to admin role
         $userAdmin = User::where('email', env('ADMIN_EMAIL'))->firstOrFail();

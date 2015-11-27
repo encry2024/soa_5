@@ -11,14 +11,17 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
+Route::bind('user', function ($id) { return App\User::whereId($id)->first(); });
+Route::bind('student', function ($id) { return App\Student::whereStudentId($id)->first(); });
 Route::bind('role', function ($id) { return App\Role::whereId($id)->first(); });
-Route::resource('role', 'RoleController', ['only' => ['store', 'create']]);  
+
+Route::resource('user', 'UserController');
+Route::resource('student', 'StudentController');
