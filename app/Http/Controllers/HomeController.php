@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +33,11 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$users = User::where('id', '!=', Auth::user()->id)->paginate(25);
+		$ctr = 1;
+		$users->setPath('home');
+
+		return view('home', compact('users', 'ctr'));
 	}
 
 }

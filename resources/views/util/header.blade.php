@@ -1,4 +1,5 @@
-<div class="ui menu right aligned" style="background-color: #FCF900">
+<div class="ui borderless menu right aligned" style="border-radius: 0px;
+         background-color: #FCF900;">
     <div class="right menu">
         <div class="ui dropdown item">
             <i class="user icon"></i> {{ Auth::user()->name }} <i class="dropdown icon"></i>

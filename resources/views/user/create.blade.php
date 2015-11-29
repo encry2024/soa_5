@@ -1,15 +1,16 @@
 @extends('app')
 
 @section('content')
-    <div class="ui inverted visible left attached vertical sidebar accordion menu"
+    <div class="ui visible inverted left attached vertical sidebar borderless accordion menu"
          style="width: 16.35%;
+         /*background-color: #FCF900;*/
          ">
         <div class="item">
-
-            <h4><img class="ui mini spaced image" src="{{ URL::to('/') }}/css/logo.png"> BALANCE INQUIRY</h4>
+            <img class="ui centered image" src="{{ URL::to('/') }}/css/logo.png" />
             {{--<h3 style="text-align: center;">{{ Auth::user()->name }}</h3>--}}
         </div>
-        <div class="ui link item">
+        <div class="ui horizontal divider"><span style="color: white;">user</span></div>
+        <div class="link item">
             <a class="title">
                 <i class="dropdown icon"></i>
                 {{ Auth::user()->name }}
@@ -33,10 +34,48 @@
                 </div>
             </div>
         </div>
-        <div class="header item"><h3>MENU</h3></div>
+        <div class="ui horizontal divider"><span style="color: white;">MENU</span> </div>
         <a class="item" href="{{ route('home') }}">
-            <i class="chevron left icon"></i>
-            Back
+            <i class="home icon"></i>
+            Home
+        </a>
+        <div class="active item">
+            <i class="add user icon"></i>
+            Add Cashier
+        </div>
+        <a class="item">
+            <i class="Calendar icon"></i>
+            Set Due Date
+        </a>
+        <a class="item">
+            <i class="Money icon"></i>
+            View Unpaid Balance
+        </a>
+        <div class="link item">
+            <a class="title">
+                Import Reports
+                <i class="level up icon" style="float: right;"></i>
+            </a>
+            <div class="content">
+                <div class="ui form">
+                    <div class="grouped fields">
+                        <a class="item">Payment History</a>
+                        <a class="item">SOA History</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="item">
+            <i class="Certificate icon"></i>
+            Add SOA Information
+        </a>
+        <a class="item">
+            <i class="Send icon"></i>
+            Notify Students
+        </a>
+        <a class="item">
+            <i class="book icon"></i>
+            Activity Log
         </a>
     </div>
 
@@ -102,11 +141,6 @@
                     <div class="ui error message">
                 </form>
             </div>
-        </div>
-
-        <div class="ui basic segment">
-
-
         </div>
     </div>
 @endsection

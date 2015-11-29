@@ -2,7 +2,7 @@
 
 
 @section('header')
-	<div class="ui menu" style="border-radius: 0rem !important; background-color: #FCF900">
+	<div class="ui borderless inverted menu" style="border-radius: 0rem !important;">
 		<div class="header item">
 			STI Balance Inquiry
 		</div>
@@ -23,7 +23,7 @@
 					<form action="{{ url('/auth/login/') }}" method="post">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="ui container segment">
-							<label class="ui blue ribbon label right" style="font-size: 16px;">Log-in your account</label>
+							<label class="ui blue ribbon label right" style="font-size: 16px;  background-color: #FCF900 !important; color: black !important;">Log-in your account</label>
 
 							<br><br><br>
 

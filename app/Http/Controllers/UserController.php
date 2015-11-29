@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserRequest;
+use App\Role;
 
 class UserController extends Controller {
     /**
@@ -58,7 +59,8 @@ class UserController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$roles = Role::all();
+		return view('user.show', compact('id', 'roles'));
 	}
 
 	/**

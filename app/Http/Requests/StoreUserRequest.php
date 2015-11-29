@@ -33,10 +33,10 @@ class StoreUserRequest extends Request {
     public function messages()
     {
         return [
-            'name.required' => 'Please provide user name',
-            'email.required' => 'Please provide users email',
-            'email.unique' => 'E-mail is already in use. PLease choose another e-mail',
-            'password.required' => 'Please provide users password',
+            'name.required' => 'Please provide user\'s name',
+            'email.required' => 'Please provide user\'s email',
+            'email.unique' => 'E-mail is already in use. Please choose another e-mail',
+            'password.required' => 'Please provide user\'s password',
             'password.confirmed' => 'Password do not match'
         ];
     }

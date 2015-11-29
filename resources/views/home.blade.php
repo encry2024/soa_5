@@ -1,15 +1,20 @@
 @extends('app')
 
+{{--@section('header')
+    @include('util.header')
+@stop--}}
+
 @section('content')
-    <div class="ui inverted visible left attached vertical sidebar accordion menu"
+    <div class="ui inverted visible left attached vertical sidebar borderless accordion menu"
          style="width: 16.35%;
+         /*background-color: #FCF900;*/
          ">
         <div class="item">
-
-            <h4><img class="ui mini spaced image" src="{{ URL::to('/') }}/css/logo.png"> BALANCE INQUIRY</h4>
+            <img class="ui centered image" src="{{ URL::to('/') }}/css/logo.png" />
             {{--<h3 style="text-align: center;">{{ Auth::user()->name }}</h3>--}}
         </div>
-        <div class="ui link item">
+        <div class="ui horizontal divider"><span style="color: white;">user</span></div>
+        <div class="link item">
             <a class="title">
                 <i class="dropdown icon"></i>
                 {{ Auth::user()->name }}
@@ -33,9 +38,13 @@
                 </div>
             </div>
         </div>
-        <div class="header item"><h3>MENU</h3></div>
+        <div class="ui horizontal divider"><span style="color: white;">MENU</span></div>
+        <div class="active item">
+            <i class="home icon"></i>
+            Home
+        </div>
         <a class="item" href="{{ route('user.create') }}">
-            <i class="user layout icon"></i>
+            <i class="add user icon"></i>
             Add Cashier
         </a>
         <a class="item">
@@ -46,10 +55,20 @@
             <i class="Money icon"></i>
             View Unpaid Balance
         </a>
-        <a class="item">
-            <i class="level up icon"></i>
-            Import Reports
-        </a>
+        <div class="link item">
+            <a class="title">
+                Import Reports
+                <i class="level up icon" style="float: right;"></i>
+            </a>
+            <div class="content">
+                <div class="ui form">
+                    <div class="grouped fields">
+                        <a class="item">Payment History</a>
+                        <a class="item">SOA History</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <a class="item">
             <i class="Certificate icon"></i>
             Add SOA Information
@@ -74,32 +93,78 @@
         <div class="ui basic segment">
             <div class="ui segment">
                 <div class="ui breadcrumb">
-                    <a class="section">Home</a>
+                    <div class="active section">Home</div>
                 </div>
             </div>
-        </div>
 
-        <div class="ui basic segment">
-            <div class="ui segment">
-                <h3><i class="Users icon"></i> USERS</h3>
-                <table class="ui striped table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Granted Access</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Christan Jake Gatchalian</td>
-                            <td>Cashier</td>
-                            <td>View-Report</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="ui segment"
+                 style="
+                 /*border-radius: 0em !important;*/
+                 margin: 0em !important;
+                 position: fixed;
+                 width: 81.55%;
+                 ">
+                <h3 class="">Balance Inquiry</h3>
+                <div class="ui divider"></div>
+                <div class="ui grid">
+                    <div class="sixteen wide column grid">
+                        <button class="ui button red"><i class="trash icon"></i>Delete</button>
+                        <table class="ui striped table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Role Access</th>
+                                    <th>Description</th>
+                                    <th>
+                                        <div class="ui checkbox">
+                                            <input type="checkbox">
+                                            <label></label>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td>{{ $ctr++ }}</td>
+                                    <td><a href="{{ route('user.show', $user->id) }}">{{ $user->name }} </a></td>
+                                    <td class="ui item">
+                                        @foreach ($user->roles as $user_role)
+                                            {{ $user_role->display_name }}
+                                            <br>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($user->roles as $user_role)
+                                            @foreach ($user_role->permission_role as $user_permission)
+                                                {{ $user_permission->name }},
+                                            @endforeach
+                                            <br>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($user->roles as $user_role)
+                                            @foreach ($user_role->permission_role as $user_permission)
+                                                {{ $user_permission->description }},
+                                            @endforeach
+                                                <br>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        <div class="ui checkbox">
+                                            <input type="checkbox">
+                                            <label></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        @include('util.paginator', ['paginator' => $users->appends(Request::only('filter'))])
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -110,9 +175,8 @@
     <script>
         $('.dropdown').dropdown();
         $('.ui.accordion').accordion();
-        $('.visible.example .ui.sidebar')
-                .sidebar({
-                    context: '.pusher .bottom.segment'
-                })
+        $('.visible.example .ui.sidebar').sidebar({
+            context: '.pusher .bottom.segment'
+        })
     </script>
 @stop
