@@ -12,22 +12,21 @@
             <img class="ui centered image" src="{{ URL::to('/') }}/css/logo.png" />
             {{--<h3 style="text-align: center;">{{ Auth::user()->name }}</h3>--}}
         </div>
-        <div class="link item">
+        <div class="item">
             <a class="title">
-                <i class="dropdown icon"></i>
                 {{ Auth::user()->name }}
             </a>
-            <div class="content">
+            <div class="active content">
                 <div class="ui form">
                     <div class="grouped fields">
-                        <div class="field">
-                            <a>Profile</a>
+                        <div class="link field">
+                            <a href="#">Profile</a>
                         </div>
                         <div class="field">
-                            <a>Settings</a>
+                            <a href="#">Settings</a>
                         </div>
                         <div class="field">
-                            <a>Change Password</a>
+                            <a href="#">Change Password</a>
                         </div>
                         <div class="field">
                             <a href="{{ url('/auth/logout') }}">Logout</a>
@@ -36,7 +35,8 @@
                 </div>
             </div>
         </div>
-        <a class="item" href="{{ route('user.edit', $id->id) }}">
+        <div class="ui  divider"></div>
+        <a class="item" href="{{ route('user.edit', $user->id) }}">
             <i class="pencil icon"></i>
             Edit Information
         </a>
@@ -60,23 +60,39 @@
                     <i class="right angle icon divider"></i>
                     <div class="active section">User</div>
                     <i class="right angle icon divider"></i>
-                    <div class="active section">{{ $id->name }}</div>
+                    <div class="active section">{{ $user->name }}</div>
                 </div>
             </div>
 
             <div class="ui segment"
                  style="
-                 position: fixed;
-                 width: 81.55%;
+                    width: 100%;
                  ">
                 <div class="ui grid">
                     <div class="sixteen wide column grid">
                         <h2 class="ui center aligned icon header"><i class="user icon"></i>
-                        {{ $id->name }}
-                            <div class="sub header">{{ $id->email }}</div>
+                        {{ $user->name }}
+                            <div class="sub header">{{ $user->email }}</div>
                         </h2>
+                        <div class="ui horizontal divider">information</div>
+                        <div class="ui form">
+                            <div class="inline fields">
+                                <div class="sixteen wide field">
+                                    <label>Name</label>
+                                    <input type="text" placeholder="First Name" value="{{ $user->name }}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui form">
+                            <div class="inline fields">
+                                <div class="sixteen wide field">
+                                    <label>Email</label>
+                                    <input type="text" placeholder="E-mail" value="{{ $user->email }}" readonly>
+                                </div>
+                            </div>
+                        </div>
                         <div class="ui horizontal divider">current Roles</div>
-                        <table class="ui very basic fixed table">
+                        <table class="ui striped fixed table">
                             <thead>
                                 <tr>
                                     <th>Role</th>
@@ -85,7 +101,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($id->roles as $user_role)
+                            @foreach ($user->roles as $user_role)
                                 <tr>
                                     <td>{{ $user_role->display_name }}</td>
                                     <td>
@@ -104,16 +120,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="ui horizontal divider">Assign to Roles</div>
-                        <label>Roles: </label>
-                        <br>
-                        @foreach ($roles as $key => $role)
-                            <div class="ui checkbox">
-                                <input id="{{ $key }}" type="checkbox" name="role-{{ $role->id }}" tabindex="{{ $key }}" class="hidden">
-                                <label for="{{ $key }}">{{ $role->display_name }}</label>
-                            </div>
-                            <br>
-                        @endforeach
                     </div>
                 </div>
             </div>
@@ -129,10 +135,5 @@
         $('.visible.example .ui.sidebar').sidebar({
             context: '.pusher .bottom.segment'
         })
-        $('.ui.checkbox').checkbox({
-            onChecked: function() {
-                console.log($(this).text);
-            }
-        });
     </script>
 @stop
