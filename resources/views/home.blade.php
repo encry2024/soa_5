@@ -13,23 +13,22 @@
             <img class="ui centered image" src="{{ URL::to('/') }}/css/logo.png" />
             {{--<h3 style="text-align: center;">{{ Auth::user()->name }}</h3>--}}
         </div>
-        <div class="ui horizontal divider"><span style="color: white;">user</span></div>
-        <div class="link item">
+        <div class="item">
+            Welcome,
             <a class="title">
-                <i class="dropdown icon"></i>
                 {{ Auth::user()->name }}
             </a>
-            <div class="content">
+            <div class="active content">
                 <div class="ui form">
                     <div class="grouped fields">
-                        <div class="field">
-                            <a>Profile</a>
+                        <div class="link field">
+                            <a href="#">Profile</a>
                         </div>
                         <div class="field">
-                            <a>Settings</a>
+                            <a href="#">Settings</a>
                         </div>
                         <div class="field">
-                            <a>Change Password</a>
+                            <a href="#">Change Password</a>
                         </div>
                         <div class="field">
                             <a href="{{ url('/auth/logout') }}">Logout</a>
@@ -38,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="ui horizontal divider"><span style="color: white;">MENU</span></div>
+        <div class="ui divider"></div>
         <div class="active item">
             <i class="home icon"></i>
             Home
@@ -104,11 +103,14 @@
                  position: fixed;
                  width: 81.55%;
                  ">
-                <h3 class="">Balance Inquiry</h3>
+                <h1 class="ui header">Cashier List
+                <div class="sub header">List of registered cashier members</div>
+                </h1>
                 <div class="ui divider"></div>
                 <div class="ui grid">
                     <div class="sixteen wide column grid">
-                        <button class="ui button red"><i class="trash icon"></i>Delete</button>
+                        <button class="ui right floated button red"><i class="trash icon"></i>Delete</button>
+                        <br><br>
                         <table class="ui striped table">
                             <thead>
                                 <tr>

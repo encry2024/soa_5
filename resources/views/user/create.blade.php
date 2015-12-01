@@ -9,23 +9,22 @@
             <img class="ui centered image" src="{{ URL::to('/') }}/css/logo.png" />
             {{--<h3 style="text-align: center;">{{ Auth::user()->name }}</h3>--}}
         </div>
-        <div class="ui horizontal divider"><span style="color: white;">user</span></div>
-        <div class="link item">
+        <div class="item">
+            Welcome,
             <a class="title">
-                <i class="dropdown icon"></i>
                 {{ Auth::user()->name }}
             </a>
-            <div class="content">
+            <div class="active content">
                 <div class="ui form">
                     <div class="grouped fields">
-                        <div class="field">
-                            <a>Profile</a>
+                        <div class="link field">
+                            <a href="#">Profile</a>
                         </div>
                         <div class="field">
-                            <a>Settings</a>
+                            <a href="#">Settings</a>
                         </div>
                         <div class="field">
-                            <a>Change Password</a>
+                            <a href="#">Change Password</a>
                         </div>
                         <div class="field">
                             <a href="{{ url('/auth/logout') }}">Logout</a>
@@ -34,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="ui horizontal divider"><span style="color: white;">MENU</span> </div>
+        <div class="ui divider"><span style="color: white;"></span> </div>
         <a class="item" href="{{ route('home') }}">
             <i class="home icon"></i>
             Home
@@ -148,7 +147,7 @@
 
 @section('script')
     <script>
-        $('.ui.accordion').accordion();
+        //$('.ui.accordion').accordion();
         $('.visible.example .ui.sidebar').sidebar
         ({
             context: '.pusher .bottom.segment'
