@@ -9,13 +9,17 @@ class Role extends EntrustRole {
 
     public function user()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User', 'role_user');
 	}
 
     public function permission_role()
     {
-        //return $this->hasManyThrough('App\Permission', 'App\PermissionRole', 'permission_id', 'role_id');
-        return $this->belongsToMany('App\Permission');
+        return $this->belongsToMany('App\Permission', 'permission_role');
+    }
+
+    public function permission()
+    {
+        return $this->belongsToMany('App\Permission', 'permission_role');
     }
 }
 
