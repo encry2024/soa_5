@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -63,5 +64,23 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return redirect()->back()->with('message', $message)->with('alert', $alert);
 	}
+
+    public static function editUser($user)
+    {
+        $role_ids = DB::table('roles')
+            ->leftJoin('role_user', function($join) {
+                $join->on('roles.id', '=', 'role_user.role_id');
+            })
+            ->join('users', function($join) {
+                $join->on('users.id', '=', 'role_user.user_id');
+            })
+            ->where('users.id', '=', $user->id)
+            ->lists('role_id');
+
+        $roles = Role::all();
+
+
+        return view('user.edit', compact('user', 'roles', 'role_ids'));
+    }
 
 }
