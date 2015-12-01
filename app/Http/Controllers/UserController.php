@@ -7,6 +7,9 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserRequest;
 use App\Role;
+use Illuminate\Support\Facades\DB;
+use App\RoleUser;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller {
     /**
@@ -57,21 +60,23 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($user)
 	{
 		$roles = Role::all();
-		return view('user.show', compact('id', 'roles'));
+		return view('user.show', compact('user', 'roles'));
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $user
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($user)
 	{
-		//
+        $edit_user = User::editUser($user);
+
+		return $edit_user;
 	}
 
 	/**
@@ -80,9 +85,9 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $user)
 	{
-		//
+        dd($request->all());
 	}
 
 	/**
@@ -94,6 +99,24 @@ class UserController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function updateRoles(User $user, Request $request, $user_id)
+    {
+        $userModel = User::find($user_id);
+        $userModel->name = $request->get('name');
+        $userModel->email = $request->get('email');
+        $userModel->save();
+
+        // detach role from user
+        $userModel->detachRoles(Role::all());
+
+        //insert new roles
+        foreach ($request->get('role') as $role_request) {
+            $userModel->attachRole(Role::whereName($role_request)->first());
+        }
+
+        return Redirect::back()->with('msg', ' was successfully updated.');
 	}
 
 }
