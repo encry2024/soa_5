@@ -22791,6 +22791,7 @@ Floated Menu / Item
 
 .ui.selectable.table tbody tr:hover {
   background: rgba(0, 0, 0, 0.05) !important;
+  /*background-color: #FCF900 !important;*/
   color: rgba(0, 0, 0, 0.95) !important;
 }
 
