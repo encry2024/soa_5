@@ -1,8 +1,5 @@
 @extends('app')
 
-{{--@section('header')
-    @include('util.header')
-@stop--}}
 
 @section('content')
     <div class="ui inverted visible left attached vertical sidebar borderless accordion menu"
@@ -38,18 +35,18 @@
             </div>
         </div>
         <div class="ui divider"></div>
-        <div class="blue active item">
+        <a class="item" href="{{ route('home') }}">
             <i class="home icon"></i>
             Home
-        </div>
+        </a>
         <a class="item" href="{{ route('user.create') }}">
             <i class="add user icon"></i>
             Add Cashier
         </a>
-        <a class="item" href="{{ route('due_dates') }}">
+        <div class="blue active item">
             <i class="Calendar icon"></i>
             Set Due Date
-        </a>
+        </div>
         <a class="item">
             <i class="Money icon"></i>
             View Unpaid Balance
@@ -87,12 +84,14 @@
          transform:  none !important;
         float: right;
         width: 83.5%;
-        ">
+        " >
 
         <div class="ui basic segment">
             <div class="ui segment">
                 <div class="ui breadcrumb">
-                    <div class="active section">Home</div>
+                    <a class="section" href="{{ route('home') }}">Home</a>
+                    <i class="right angle icon divider"></i>
+                    <div class="active section">Set Due Date</div>
                 </div>
             </div>
 
@@ -104,72 +103,57 @@
                  width: 81.55%;
                  ">
                 <h1 class="ui header">
-                    <i class="users icon"></i>
+                    <i class="calendar icon"></i>
                     <div class="ui content">
-                    Cashier List
-                    <div class="sub header">List of registered cashier members</div>
+                        Due Dates
+                        <div class="sub header">Set the due dates of Enrollment</div>
                     </div>
                 </h1>
                 <div class="ui divider"></div>
                 <div class="ui grid">
                     <div class="sixteen wide column grid">
-                        <button class="ui right floated button red"><i class="trash icon"></i>Delete</button>
-                        <br><br>
-                        <table class="ui striped table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Role Access</th>
-                                    <th>Description</th>
-                                    <th>
-                                        <div class="ui checkbox">
-                                            <input type="checkbox">
-                                            <label></label>
-                                        </div>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($users as $user)
-                                <tr>
-                                    <td>{{ $ctr++ }}</td>
-                                    <td><a href="{{ route('user.show', $user->id) }}">{{ $user->name }} </a></td>
-                                    <td class="ui item">
-                                        @foreach ($user->roles as $user_role)
-                                            {{ $user_role->display_name }}
-                                            <br>
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($user->roles as $user_role)
-                                            @foreach ($user_role->permission_role as $user_permission)
-                                                {{ $user_permission->name }},
-                                            @endforeach
-                                            <br>
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($user->roles as $user_role)
-                                            @foreach ($user_role->permission_role as $user_permission)
-                                                {{ $user_permission->description }},
-                                            @endforeach
-                                                <br>
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        <div class="ui checkbox">
-                                            <input type="checkbox">
-                                            <label></label>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        @include('util.paginator', ['paginator' => $users->appends(Request::only('filter'))])
-                        <br>
+                        <form class="ui form">
+                            <div class="field">
+                                <label>Down Payment Date</label>
+                                <div class="ui input left icon">
+                                    <input class="datepicker_1" type="text" placeholder="Down Payment Date">
+                                    <i class="calendar icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>2nd Payment *</label>
+                                <div class="ui left icon input">
+                                    <input class="datepicker_2" type="text" placeholder="2nd Payment Date">
+                                    <i class="calendar icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>3rd Payment *</label>
+                                <div class="ui left icon input">
+                                    <input class="datepicker_3" type="text" placeholder="3rd Payment Date">
+                                    <i class="calendar icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>4th Payment *</label>
+                                <div class="ui left icon input">
+                                    <input class="datepicker_4" type="text" placeholder="4th Payment Date">
+                                    <i class="calendar icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>5th Payment *</label>
+                                <div class="ui left icon input">
+                                    <input class="datepicker_5" type="text" placeholder="5th Payment Date">
+                                    <i class="calendar icon"></i>
+                                </div>
+                            </div>
+                            <button class="ui fluid button positive" type="submit"><i class="checkmark icon"></i> Set Due Date</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -180,8 +164,33 @@
 
 @section('script')
     <script>
+        $('.datepicker_1').datepicker({
+            format: "dd-MM-yyyy",
+            autoclose: true
+        });
+
+        $('.datepicker_2').datepicker({
+            format: "dd-MM-yyyy",
+            autoclose: true
+        });
+
+        $('.datepicker_3').datepicker({
+            format: "dd-MM-yyyy",
+            autoclose: true
+        });
+
+        $('.datepicker_4').datepicker({
+            format: "dd-MM-yyyy",
+            autoclose: true
+        });
+
+        $('.datepicker_5').datepicker({
+            format: "dd-MM-yyyy",
+            autoclose: true
+        });
+
+
         $('.dropdown').dropdown();
-        $('.ui.accordion').accordion();
         $('.visible.example .ui.sidebar').sidebar({
             context: '.pusher .bottom.segment'
         })

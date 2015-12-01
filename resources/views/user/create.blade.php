@@ -38,11 +38,11 @@
             <i class="home icon"></i>
             Home
         </a>
-        <div class="active item">
+        <div class="blue active item">
             <i class="add user icon"></i>
             Add Cashier
         </div>
-        <a class="item">
+        <a class="item" href="{{ route('due_dates') }}">
             <i class="Calendar icon"></i>
             Set Due Date
         </a>
@@ -115,7 +115,12 @@
                 </div>
             @endif
             <div class="ui segment">
-                <h3><i class="Add User icon"></i> Create User</h3>
+                <h1 class="ui header">
+                    <i class="add user icon"></i>
+                    <div class="content">
+                        Add Cashier
+                    </div>
+                </h1>
                 <hr>
                 <br>
                 <form class="ui form" action="{{ route('user.store') }}" method="POST">
@@ -149,55 +154,11 @@
     <script>
         //$('.ui.accordion').accordion();
         $('.visible.example .ui.sidebar').sidebar
-        ({
-            context: '.pusher .bottom.segment'
-        });
+        ({});
 
         $('.message .close').on('click', function()
         {
             $(this).closest('.message').transition('fade');
         });
-
-        /*$('.ui.form').form({
-            fields: {
-                name: {
-                    identifier: 'name',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt : 'Please provide the user\'s name'
-                        }
-                    ]
-                },
-                email: {
-                    identifier: 'email',
-                    rules: [
-                        {
-                            type: 'empty',
-                            contentType: 'email',
-                            prompt : 'Please provide the user\'s e-mail'
-                        }
-                    ]
-                },
-                password: {
-                    identifier: 'password',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt : 'Please provide the user\'s password'
-                        }
-                    ]
-                },
-                password_confirmation: {
-                    identifier: 'password_confirmation',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt : 'Please provide the user\'s name'
-                        }
-                    ]
-                }
-            }
-        });*/
     </script>
 @stop

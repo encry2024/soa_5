@@ -27,3 +27,6 @@ Route::resource('user', 'UserController');
 
 
 post('update/{user_id}/role', ['as' => 'update_role', 'uses' => 'UserController@updateRoles']);
+get('set/due_date', ['as' => 'due_dates', 'uses' => function () {
+    return view('due_date.index');
+}]);

@@ -16,7 +16,7 @@
             <a class="title">
                 {{ Auth::user()->name }}
             </a>
-            <div class="active content">
+            <div class="blue active content">
                 <div class="ui form">
                     <div class="grouped fields">
                         <div class="link field">

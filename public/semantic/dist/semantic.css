@@ -20977,6 +20977,7 @@ Floated Menu / Item
 
 .ui.menu .blue.active.item,
 .ui.blue.menu .active.item {
+
   border-color: #2185D0 !important;
   color: #2185D0 !important;
 }

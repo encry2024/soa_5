@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="{{ URL::to('/') }}/semantic/dist/components/dropdown.css">
 		<link rel="stylesheet" href="{{ URL::to('/') }}/semantic/dist/components/modal.css">
 		<link rel="stylesheet" href="{{ URL::to('/') }}/semantic/dist/components/accordion.css">
+        <link rel="stylesheet" href="{{ URL::to('/') }}/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.css">
 		@yield('header')
 	</head>
 
@@ -22,12 +23,15 @@
 		<script src="{{ URL::to('/') }}/semantic/dist/components/api.min.js"></script>
 		<script src="{{ URL::to('/') }}/semantic/dist/components/transition.min.js"></script>
 		<script src="{{ URL::to('/') }}/semantic/dist/components/accordion.js"></script>
+		<script src="{{ URL::to('/') }}/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
-		@yield('content')
+        @yield('content')
         @yield('script')
+
         <style>
             body {
-                background-image: url("{{ URL::to('/') }}/css/Jacob.png");
+                /*background-image: ;*/
+                background: url("{{ URL::to('/') }}/css/Jacob.png") ;
             }
         </style>
 	</body>
