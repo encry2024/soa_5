@@ -19,9 +19,11 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
-Route::bind('user', function ($id) { return App\User::whereId($id)->first(); });
-Route::bind('student', function ($id) { return App\Student::whereStudentId($id)->first(); });
-Route::bind('role', function ($id) { return App\Role::whereId($id)->first(); });
+Route::bind('user',     function ($id)    { return App\User::whereId($id)->first(); });
+Route::bind('student',  function ($id)    { return App\Student::whereStudentId($id)->first(); });
+Route::bind('role',     function ($id)    { return App\Role::whereId($id)->first(); });
 
 Route::resource('user', 'UserController');
-Route::resource('student', 'StudentController');
+
+
+post('update/{user_id}/role', ['as' => 'update_role', 'uses' => 'UserController@updateRoles']);
