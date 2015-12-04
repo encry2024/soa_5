@@ -112,7 +112,8 @@
                 <div class="ui divider"></div>
                 <div class="ui grid">
                     <div class="sixteen wide column grid">
-                        <form class="ui form" action="{{ route('information.store') }}">
+                        <form class="ui form" action="{{ route('information.store') }}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="field">
                                 <label>Down Payment Date</label>
                                 <div class="ui input left icon">
