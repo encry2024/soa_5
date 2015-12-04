@@ -12,7 +12,7 @@ class Information extends Eloquent {
         return $this->belongsTo('Field');
     }
 
-    public static function update_information(Request $requests)
+    public static function updateDueDate(Request $requests)
     {
         $information = Information::all();
 
