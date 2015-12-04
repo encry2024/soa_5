@@ -224,5 +224,10 @@
         $('.visible.example .ui.sidebar').sidebar({
             context: '.pusher .bottom.segment'
         })
+
+        $('.message .close').on('click', function()
+        {
+            $(this).closest('.message').transition('fade');
+        });
     </script>
 @stop
