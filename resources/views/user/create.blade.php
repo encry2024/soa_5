@@ -90,7 +90,7 @@
                 <div class="ui breadcrumb">
                     <a class="section" href="{{ route('home') }}">Home</a>
                     <i class="right angle icon divider"></i>
-                    <div class="active section">Create User</div>
+                    <div class="active section">Add Cashier</div>
                 </div>
             </div>
             @if (count($errors) > 0)
@@ -119,6 +119,7 @@
                     <i class="add user icon"></i>
                     <div class="content">
                         Add Cashier
+                        <div class="sub header">Cashiers has an access to: View receipt, Print receipt, & Print SOA</div>
                     </div>
                 </h1>
                 <hr>
@@ -153,9 +154,8 @@
 @section('script')
     <script>
         //$('.ui.accordion').accordion();
-        $('.visible.example .ui.sidebar').sidebar
-        ({});
-
+        $('.visible.example .ui.sidebar').sidebar({});
+        $('.ui.accordion').accordion();
         $('.message .close').on('click', function()
         {
             $(this).closest('.message').transition('fade');
