@@ -112,7 +112,7 @@
                 <div class="ui divider"></div>
                 <div class="ui grid">
                     <div class="sixteen wide column grid">
-                        <form class="ui form">
+                        <form class="ui form" action="{{ route('information.store') }}">
                             <div class="field">
                                 <label>Down Payment Date</label>
                                 <div class="ui input left icon">
