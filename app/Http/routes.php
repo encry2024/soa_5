@@ -36,4 +36,4 @@ Route::group(['middleware' => 'auth'], function () {
     
 });
 
-Route::resource('information', 'InformationController');
+Route::resource('information', 'InformationController', ['only' => ['store', 'update']]);
