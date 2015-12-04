@@ -25,8 +25,12 @@ Route::bind('role',     function ($id)    { return App\Role::whereId($id)->first
 
 Route::resource('user', 'UserController');
 
-
 post('update/{user_id}/role', ['as' => 'update_role', 'uses' => 'UserController@updateRoles']);
-get('set/due_date', ['as' => 'due_dates', 'uses' => function () {
-    return view('due_date.index');
-}]);
+
+Route::group(['middleware' => 'auth'], function () {
+
+    get('set/due_date', ['as' => 'due_dates', 'uses' => function () {
+        return view('due_date.index');
+    }]);
+    
+});
