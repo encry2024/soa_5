@@ -32,9 +32,11 @@ class InformationController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$update_due_date = Information::updateDueDate($request);
+
+		return $update_due_date;
 	}
 
 	/**
