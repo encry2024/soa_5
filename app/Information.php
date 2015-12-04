@@ -12,10 +12,10 @@ class Information extends Eloquent {
         return $this->belongsTo('Field');
     }
 
-    $information = Information::all();
-        $fields      = Field::all();
+    public static function update_information(Request $requests)
+    {
+        $information = Information::all();
 
-    public static update_information(Request $requests) {
         foreach ($information as $info) {
             if ($info->field->student_label == "payment_date1") {
                 $info->value = $requests->get('down_payment');
@@ -42,6 +42,8 @@ class Information extends Eloquent {
                 $info->save();
             }
         }
+
+        return Redirect::back()->with('msg', 'Due date was successfuly updated');
     }
 
 }
