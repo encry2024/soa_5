@@ -24,6 +24,7 @@
 		<script src="{{ URL::to('/') }}/semantic/dist/components/transition.min.js"></script>
 		<script src="{{ URL::to('/') }}/semantic/dist/components/accordion.js"></script>
 		<script src="{{ URL::to('/') }}/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+        <script src="{{ URL::to('/') }}/moment.js"></script>
 
         @yield('content')
         @yield('script')
