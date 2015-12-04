@@ -91,7 +91,7 @@
                 <div class="ui breadcrumb">
                     <a class="section" href="{{ route('home') }}">Home</a>
                     <i class="right angle icon divider"></i>
-                    <div class="active section">Set Due Date</div>
+                    <div class="active section">Due Dates</div>
                 </div>
             </div>
 
@@ -166,30 +166,50 @@
     <script>
         $('.datepicker_1').datepicker({
             format: "dd-MM-yyyy",
-            autoclose: true
+            autoclose: true,
+            todayHighlight: 1,
+            minView: 2,
+            forceParse: 0,
+            startDate: moment().format('DD-MMMM-YYYY')
         });
 
         $('.datepicker_2').datepicker({
             format: "dd-MM-yyyy",
-            autoclose: true
+            autoclose: true,
+            todayHighlight: 1,
+            minView: 2,
+            forceParse: 0,
+            startDate: moment().format('DD-MMMM-YYYY')
         });
 
         $('.datepicker_3').datepicker({
             format: "dd-MM-yyyy",
-            autoclose: true
+            autoclose: true,
+            todayHighlight: 1,
+            minView: 2,
+            forceParse: 0,
+            startDate: moment().format('DD-MMMM-YYYY')
         });
 
         $('.datepicker_4').datepicker({
             format: "dd-MM-yyyy",
-            autoclose: true
+            autoclose: true,
+            todayHighlight: 1,
+            minView: 2,
+            forceParse: 0,
+            startDate: moment().format('DD-MMMM-YYYY')
         });
 
         $('.datepicker_5').datepicker({
             format: "dd-MM-yyyy",
-            autoclose: true
+            autoclose: true,
+            todayHighlight: moment(),
+            minView: 2,
+            forceParse: 0,
+            startDate: moment().format('DD-MMMM-YYYY')
         });
 
-
+        $('.ui.accordion').accordion();
         $('.dropdown').dropdown();
         $('.visible.example .ui.sidebar').sidebar({
             context: '.pusher .bottom.segment'
