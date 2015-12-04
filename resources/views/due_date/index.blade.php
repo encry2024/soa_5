@@ -95,6 +95,15 @@
                 </div>
             </div>
 
+            @if (Session::has('msg'))
+                <div class="ui success message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        {{ Session::get('msg') }}
+                    </div>
+                </div>
+            @endif
+
             <div class="ui segment"
                  style="
                  /*border-radius: 0em !important;*/
