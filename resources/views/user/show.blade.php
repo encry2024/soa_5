@@ -12,7 +12,7 @@
             <img class="ui centered image" src="{{ URL::to('/') }}/css/logo.png" />
             {{--<h3 style="text-align: center;">{{ Auth::user()->name }}</h3>--}}
         </div>
-        <div class="item">
+        <div class="item">Welcome,
             <a class="title">
                 {{ Auth::user()->name }}
             </a>
