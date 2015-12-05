@@ -15,31 +15,41 @@ class Information extends Eloquent {
 
     public static function updateDueDate($requests)
     {
-        $information = Information::all();
+        $fields = Field::all();
 
-        foreach ($information as $info) {
-            if ($info->field->student_label == "payment_date1") {
-                $info->value = $requests->get('down_payment');
+        foreach ($fields as $field) {
+            if ($field->student_label == "payment_date1") {
+                $info = new Information();
+                $info->field_id = $field->id;
+                $info->value = $requests->get('due_1');
                 $info->save();
             }
 
-            if ($info->field->student_label == "payment_date2") {
-                $info->value = $requests->get('sec_payment');
+            if ($field->student_label == "payment_date2") {
+                $info = new Information();
+                $info->field_id = $field->id;
+                $info->value = $requests->get('due_2');
                 $info->save();
             }
 
-            if ($info->field->student_label == "payment_date3") {
-                $info->value = $requests->get('thrd_payment');
+            if ($field->student_label == "payment_date3") {
+                $info = new Information();
+                $info->field_id = $field->id;
+                $info->value = $requests->get('due_3');
                 $info->save();
             }
 
-            if ($info->field->student_label == "payment_date4") {
-                $info->value = $requests->get('fth_payment');
+            if ($field->student_label == "payment_date4") {
+                $info = new Information();
+                $info->field_id = $field->id;
+                $info->value = $requests->get('due_4');
                 $info->save();
             }
 
-            if ($info->field->student_label == "payment_date5") {
-                $info->value = $requests->get('ffth_payment');
+            if ($field->student_label == "payment_date5") {
+                $info = new Information();
+                $info->field_id = $field->id;
+                $info->value = $requests->get('due_5');
                 $info->save();
             }
         }
