@@ -19,16 +19,17 @@
                 <div class="ui form">
                     <div class="grouped fields">
                         <div class="link field">
-                            <a href="#">Profile</a>
+                            <a href="#"><i class="user icon"></i> Profile</a>
                         </div>
                         <div class="field">
-                            <a href="#">Settings</a>
+                            <a href="#"><i class="settings icon"></i> Settings</a>
+                        </div>
+
+                        <div class="field">
+                            <a href="#"><i class="Undo icon"></i> Change Password</a>
                         </div>
                         <div class="field">
-                            <a href="#">Change Password</a>
-                        </div>
-                        <div class="field">
-                            <a href="{{ url('/auth/logout') }}">Logout</a>
+                            <a href="{{ url('/auth/logout') }}"><i class="Sign out icon"></i>  Sign out</a>
                         </div>
                     </div>
                 </div>
@@ -44,8 +45,21 @@
             Add Cashier
         </a>
         <div class="blue active item">
-            <i class="Calendar icon"></i>
-            Set Due Date
+            <a class="active title">
+                SOA Information
+                <i class="dropdown icon"></i>
+            </a>
+            <div class="active content">
+                <div class="content">
+                    <div class="ui form">
+                        <div class="grouped fields">
+                            <a class="item"><i class="plus icon" style="float: left;"></i> &nbsp; Add Information<a>
+                            <a class="item"><i class="pencil icon" style="float: left;"></i> &nbsp; Edit Information<a>
+                            <a class="item"><i class="calendar icon" style="float: left;"></i> &nbsp; Update Due Date</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <a class="item">
             <i class="Money icon"></i>
@@ -65,10 +79,6 @@
                 </div>
             </div>
         </div>
-        <a class="item">
-            <i class="Certificate icon"></i>
-            Add SOA Information
-        </a>
         <a class="item">
             <i class="Send icon"></i>
             Notify Students

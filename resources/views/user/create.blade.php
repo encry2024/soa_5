@@ -42,9 +42,9 @@
             <i class="add user icon"></i>
             Add Cashier
         </div>
-        <a class="item" href="{{ route('due_dates') }}">
-            <i class="Calendar icon"></i>
-            Set Due Date
+        <a class="item" href="{{ route('information.index') }}">
+            <i class="Certificate icon"></i>
+            SOA Information
         </a>
         <a class="item">
             <i class="Money icon"></i>
@@ -64,10 +64,6 @@
                 </div>
             </div>
         </div>
-        <a class="item">
-            <i class="Certificate icon"></i>
-            Add SOA Information
-        </a>
         <a class="item">
             <i class="Send icon"></i>
             Notify Students
