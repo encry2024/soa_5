@@ -84,7 +84,6 @@
         float: right;
         width: 83.5%;
         ">
-
         <div class="ui basic segment">
             <div class="ui segment">
                 <div class="ui breadcrumb">
