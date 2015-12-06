@@ -30,3 +30,21 @@ post('update/{user_id}/role', ['as' => 'update_role', 'uses' => 'UserController@
 
 // INFORMATION
 Route::resource('information', 'InformationController', ['only' => ['store', 'update', 'index']]);
+
+
+// SOA HISTORY
+Route::group(['middleware' => 'auth'], function () {
+
+    get('import/payment_history', ['as' => 'import_payment_history', 'uses' => 'InformationController@showImportPaymentHistory']);
+    get('import/soa_history', ['as' => 'import_soa_history', 'uses' => 'InformationController@showImportSoaHistory']);
+
+});
+
+Route::filter('csrf', function () {
+    $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
+    if (Session::token() != $token) {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
+});
+
+post('import_field/information', ['as' => 'importInformation', 'uses' => 'InformationController@importInformation']);
