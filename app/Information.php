@@ -25,12 +25,20 @@ class Information extends Eloquent {
                 $info->save();
             }
 
+            $info = new Information();
+            $info->field_id = $field->id;
+            $info->save();
+
             if ($field->student_label == "payment_date2") {
                 $info = new Information();
                 $info->field_id = $field->id;
                 $info->value = $requests->get('due_2');
                 $info->save();
             }
+
+            $info = new Information();
+            $info->field_id = $field->id;
+            $info->save();
 
             if ($field->student_label == "payment_date3") {
                 $info = new Information();
@@ -39,6 +47,10 @@ class Information extends Eloquent {
                 $info->save();
             }
 
+            $info = new Information();
+            $info->field_id = $field->id;
+            $info->save();
+
             if ($field->student_label == "payment_date4") {
                 $info = new Information();
                 $info->field_id = $field->id;
@@ -46,15 +58,32 @@ class Information extends Eloquent {
                 $info->save();
             }
 
+            $info = new Information();
+            $info->field_id = $field->id;
+            $info->save();
+
             if ($field->student_label == "payment_date5") {
                 $info = new Information();
                 $info->field_id = $field->id;
                 $info->value = $requests->get('due_5');
                 $info->save();
             }
+
+            $info = new Information();
+            $info->field_id = $field->id;
+            $info->save();
         }
 
         return Redirect::back()->with('msg', 'Due date was successfuly updated');
+    }
+
+    public static function importInformation($request)
+    {
+        $new_information = new Information();
+        $new_information->device_id = $request->get('device_id');
+        $new_information->field_id = $request->get('field_id');
+        $new_information->value = $request->get('value');
+        $new_information->save();
     }
 
 }
