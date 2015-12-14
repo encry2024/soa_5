@@ -13,7 +13,7 @@
             <img class="ui centered image" src="{{ URL::to('/') }}/css/logo.png" />
             {{--<h3 style="text-align: center;">{{ Auth::user()->name }}</h3>--}}
         </div>
-        <a class="item">
+        <div class="item">
             Welcome,
             <a class="title">
                 {{ Auth::user()->name }}
@@ -36,9 +36,9 @@
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
         <div class="ui divider"></div>
-        <div class="blue active item">
+        <div class="active item">
             <i class="home icon"></i>
             Home
         </div>
@@ -62,12 +62,13 @@
             <div class="content">
                 <div class="ui form">
                     <div class="grouped fields">
-                        <a class="item">Payment History</a>
-                        <a class="item">SOA History</a>
+                        <a class="item" href="{{ route('import_payment_history') }}">Payment History</a>
+                        <a class="item" href="{{ route('import_soa_history') }}">SOA History</a>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="ui divider"></div>
         <a class="item">
             <i class="Send icon"></i>
             Notify Students

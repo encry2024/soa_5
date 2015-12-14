@@ -38,7 +38,7 @@
             <i class="home icon"></i>
             Home
         </a>
-        <div class="blue active item">
+        <div class="active item">
             <i class="add user icon"></i>
             Add Cashier
         </div>
@@ -64,6 +64,7 @@
                 </div>
             </div>
         </div>
+        <div class="ui divider"></div>
         <a class="item">
             <i class="Send icon"></i>
             Notify Students

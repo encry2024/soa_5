@@ -10,6 +10,11 @@ class Field extends Eloquent {
         return $this->belongsTo('AssessmentUser');
     }
 
+    public function information()
+    {
+        return $this->hasMany('App\Information');
+    }
+
     public static function add_field() {
         if (isset($_POST["mytext"]) != '') {
             foreach($_POST["mytext"] as $labelField) {

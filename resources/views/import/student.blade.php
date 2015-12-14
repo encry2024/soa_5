@@ -45,7 +45,7 @@
             Add Cashier
         </a>
         <div class="active item">
-        <i class="asterisk icon"></i>
+            <i class="asterisk icon"></i>
             <a class="active title">
                 SOA Information
             </a>
@@ -54,8 +54,8 @@
                     <div class="ui form">
                         <div class="grouped fields">
                             <a class="item"><i class="plus icon" style="float: left;"></i> &nbsp; Add Information<a>
-                            <a class="item"><i class="pencil icon" style="float: left;"></i> &nbsp; Edit Information<a>
-                            <a class="item"><i class="calendar icon" style="float: left;"></i> &nbsp; Update Due Date</a>
+                                    <a class="item"><i class="pencil icon" style="float: left;"></i> &nbsp; Edit Information<a>
+                                            <a class="item"><i class="calendar icon" style="float: left;"></i> &nbsp; Update Due Date</a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,6 @@
                 </div>
             </div>
         </div>
-        <div class="ui divider"></div>
         <a class="item">
             <i class="Send icon"></i>
             Notify Students
@@ -120,7 +119,6 @@
                  /*border-radius: 0em !important;*/
                  margin: 0em !important;
                  ">
-
                 <h1 class="ui header">
                     <i class="asterisk icon"></i>
                     <div class="ui content">
@@ -128,33 +126,30 @@
                         <div class="sub header">Student's data based on the excel files.</div>
                     </div>
                 </h1>
-
                 <div class="ui divider"></div>
-
-                <table class="ui fixed striped table">
+                <table class="ui fixed table">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Student Data</th>
-                            <th class="three wide">Actions</th>
-                        </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Student Data</th>
+                        <th class="three wide">Actions</th>
+                    </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($fields as $field)
+                    @foreach ($fields as $field)
                         <tr>
                             <td>{{ ++$ctr }}</td>
                             <td>{{ $field->student_label }}</td>
                             <td>
-                                <a class="edit_modal" style="cursor: hand;" onclick="editField({{ $field->id }}, '{{ $field->student_label }}')" ><i class="pencil icon popup" data-content="Edit" data-variation="tiny"></i></a>
-                                <a style="cursor: hand;" onclick="deleteField({{ $field->id }}, '{{ $field->student_label }}')"><i class="trash icon" data-content="Delete" data-variation="tiny"></i></a>
-                                <a style="cursor: hand;" onclick="seeInfo({{ $field->id }}, '{{ $field->student_label }}')"><i class="Code icon" data-content="Show all info in this field" data-variation="tiny"></i></a>
+                                <a class="edit_modal" style="cursor: hand;" onclick="editField({{ $field->id }}, '{{ $field->student_label }}')"><i class="pencil icon"></i></a>
+                                <a style="cursor: hand;" onclick="deleteField({{ $field->id }}, '{{ $field->student_label }}')"><i class="trash icon"></i></a>
+                                <a style="cursor: hand;" onclick="seeInfo({{ $field->id }}, '{{ $field->student_label }}')"><i class="Code icon"></i></a>
                             </td>
                         </tr>
-                        @endforeach
+                    @endforeach
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
@@ -200,41 +195,9 @@
 
 @section('script')
     <script>
-        $('.pencil').popup({
-            hoverable: true});
-
-        $('.trash').popup({
-            hoverable: true});
-
-        $('.Code').popup({
-            hoverable: true});
-
-        $('#editModal').modal('attach events', '.edit_modal', 'show');
-
-        function editField (field_id, field_label)
-        {
-            var url = "{{ route('field.update', ':field_id') }}";
-                url = url.replace(':field_id', field_id);
-            var this_form = $("#editForm");
-
-            document.getElementById('field_label').value = field_label;
-            document.getElementById('field_id').value = field_id;
-            this_form.attr('action', url);
-        }
-
-        function deleteField(field_id, field_label)
-        {
-            var url = "{{ route('field.destroy', ':field_id') }}";
-            url = url.replace(':field_id', field_id);
-            var this_form = $("#deleteForm");
-
-            document.getElementById('field_label').value = field_label;
-            document.getElementById('field_id').value = field_id;
-            this_form.attr('action', url);
-        }
-
+        //$('.ui.accordion').accordion();
         $('.dropdown').dropdown();
-        
+
         $('.visible.example .ui.sidebar').sidebar({
             context: '.pusher .bottom.segment'
         })

@@ -4,18 +4,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Information;
 use App\Field;
 
-class InformationController extends Controller {
-	/**
-	 * InformationController constructor.
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
-
+class FieldController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -24,10 +15,7 @@ class InformationController extends Controller {
 	 */
 	public function index()
 	{
-		$fields = Field::all();
-		$ctr = 0;
-
-		return view('information.index', compact('fields', 'ctr'));
+		//
 	}
 
 	/**
@@ -45,11 +33,9 @@ class InformationController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store()
 	{
-		$update_due_date = Information::updateDueDate($request);
-
-		return $update_due_date;
+		//
 	}
 
 	/**
@@ -80,9 +66,14 @@ class InformationController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $field_obj)
 	{
-		//
+		$field = Field::find($field_obj->id);
+		$field->student_label = $request->get('student_label');
+
+		$field->save();
+
+		return redirect()->back();
 	}
 
 	/**
@@ -95,16 +86,5 @@ class InformationController extends Controller {
 	{
 		//
 	}
-
-    public function showImportSoaHistory()
-    {
-        return view('information.import.soa_history');
-    }
-
-    public function importInformation(Request $request) {
-        $import_information = Information::importInformation($request);
-
-        return $import_information;
-    }
 
 }

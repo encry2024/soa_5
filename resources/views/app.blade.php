@@ -1,6 +1,10 @@
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta id="_token" name="_token" content="{{ csrf_token() }}"/>
+
 		<title>STI :: Statement Of Account</title>
 		<link rel="stylesheet" href="{{ URL::to('/') }}/semantic/dist/semantic.css">
 		<link rel="stylesheet" href="{{ URL::to('/') }}/semantic/dist/components/menu.css">
